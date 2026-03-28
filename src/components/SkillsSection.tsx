@@ -31,31 +31,30 @@ const communicationSkills = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 gradient-subtle">
+    <section id="skills" className="py-20 gradient-section-cool">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-foreground text-center mb-3">
-          Skills & Expertise
-        </h2>
+        <h2 className="section-title">Skills & Expertise</h2>
         <p className="text-muted-foreground text-center mb-12 text-sm">
           Core competencies that drive results
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {/* Professional Skills */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-6">
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-5 rounded-full bg-primary" />
               Professional Skills
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {skills.map((skill) => (
-                <div key={skill.label} className="neu-card-sm p-4 flex flex-col items-center text-center gap-2">
+                <div key={skill.label} className="neu-card-sm p-4 flex flex-col items-center text-center gap-2.5 hover:scale-[1.02] transition-transform duration-200">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                     <skill.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-xs font-medium text-foreground">{skill.label}</span>
-                  <div className="w-full h-1.5 rounded-full bg-muted neu-inset overflow-hidden">
+                  <span className="text-[11px] font-semibold text-foreground leading-tight">{skill.label}</span>
+                  <div className="w-full h-1.5 rounded-full bg-muted/60 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-primary"
+                      className="h-full rounded-full bg-primary/80"
                       style={{ width: `${skill.level}%` }}
                     />
                   </div>
@@ -66,20 +65,24 @@ const SkillsSection = () => {
 
           {/* Communication Skills */}
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-6">
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <span className="w-1.5 h-5 rounded-full bg-accent" />
               Communication Skills
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {communicationSkills.map((skill) => (
                 <div key={skill.label} className="neu-card-sm p-4">
-                  <div className="flex justify-between items-center mb-2">
+                  <div className="flex justify-between items-center mb-2.5">
                     <span className="text-sm font-medium text-foreground">{skill.label}</span>
-                    <span className="text-xs text-muted-foreground font-medium">{skill.level}%</span>
+                    <span className="text-[10px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-full">{skill.level}%</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-muted neu-inset overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-muted/60 overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-accent"
-                      style={{ width: `${skill.level}%` }}
+                      className="h-full rounded-full"
+                      style={{
+                        width: `${skill.level}%`,
+                        background: 'linear-gradient(90deg, hsl(195 70% 42%) 0%, hsl(25 95% 53%) 100%)',
+                      }}
                     />
                   </div>
                 </div>

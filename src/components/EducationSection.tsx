@@ -24,28 +24,28 @@ const certifications = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-20 gradient-subtle">
+    <section id="education" className="py-20 gradient-section-cool">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-foreground text-center mb-3">
-          Education & Certifications
-        </h2>
+        <h2 className="section-title">Education & Certifications</h2>
         <p className="text-muted-foreground text-center mb-12 text-sm">
           Academic background and professional development
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Education */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <GraduationCap className="w-5 h-5 text-primary" />
-              <h3 className="text-lg font-semibold text-foreground">Education</h3>
-            </div>
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <GraduationCap className="w-4 h-4 text-primary" />
+              </div>
+              Education
+            </h3>
             <div className="space-y-4">
               {education.map((edu, i) => (
                 <div key={i} className="neu-card p-5">
                   <h4 className="font-semibold text-foreground text-sm mb-1">{edu.degree}</h4>
-                  <p className="text-xs text-primary font-medium mb-1">{edu.school}</p>
-                  <p className="text-xs text-muted-foreground mb-2">{edu.year}</p>
+                  <p className="text-xs text-primary font-semibold mb-0.5">{edu.school}</p>
+                  <p className="text-[10px] text-muted-foreground mb-2 font-medium">{edu.year}</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">{edu.details}</p>
                 </div>
               ))}
@@ -54,16 +54,18 @@ const EducationSection = () => {
 
           {/* Certifications */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Award className="w-5 h-5 text-accent" />
-              <h3 className="text-lg font-semibold text-foreground">Certifications</h3>
-            </div>
+            <h3 className="text-base font-semibold text-foreground mb-5 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                <Award className="w-4 h-4 text-accent" />
+              </div>
+              Certifications
+            </h3>
             <div className="neu-card p-5">
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {certifications.map((cert, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                    <span className="text-sm text-foreground">{cert}</span>
+                    <span className="text-sm text-foreground leading-relaxed">{cert}</span>
                   </li>
                 ))}
               </ul>
