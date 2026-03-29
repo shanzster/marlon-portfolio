@@ -80,7 +80,7 @@
 
   /* Primary button — solid, no gradient */
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold text-sm px-7 py-3 rounded-lg transition-opacity duration-200;
+    @apply bg-primary text-primary-foreground font-semibold text-xs px-5 py-2 rounded-lg transition-opacity duration-200;
   }
   .btn-primary:hover {
     @apply opacity-90;
@@ -88,7 +88,7 @@
 
   /* Secondary / ghost button */
   .btn-secondary {
-    @apply bg-white border border-border text-foreground font-semibold text-sm px-7 py-3 rounded-lg transition-colors duration-200;
+    @apply bg-white border border-border text-foreground font-semibold text-xs px-5 py-2 rounded-lg transition-colors duration-200;
   }
   .btn-secondary:hover {
     @apply bg-muted;

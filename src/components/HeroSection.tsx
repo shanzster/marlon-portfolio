@@ -39,7 +39,7 @@ const HeroSection = () => {
       {/* Bio */}
       <p className="text-muted-foreground text-sm leading-relaxed text-center max-w-lg mb-5">
         Customer service professional with 5+ years delivering exceptional
-        support across phone, email, and live chat — known for fast resolution,
+        support across phone, email, and live calls |inbound & outbound| — known for fast resolution,
         high satisfaction scores, and keeping every interaction human.
       </p>
 
@@ -67,11 +67,11 @@ const HeroSection = () => {
       </div>
 
       {/* CTAs */}
-      <div className="flex gap-2 mb-8 w-full max-w-sm">
-        <a href="#contact" className="btn-primary flex-1 text-center text-xs px-3 py-2.5">
+      <div className="flex gap-2 mb-8">
+        <a href="#contact" className="btn-primary">
           Get in Touch
         </a>
-        <a href="/public/Elago_Marlon_CV.pdf" download className="btn-secondary flex-1 text-center text-xs px-3 py-2.5">
+        <a href="/Elago_Marlon_CV.pdf" download className="btn-secondary">
           Download Resume
         </a>
       </div>

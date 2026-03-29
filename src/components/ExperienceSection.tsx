@@ -4,7 +4,7 @@ const experiences = [
   {
     role: "Customer Support Specialist",
     company: "Buwelo",
-    period: "2025 – 2026",
+    period: "2025 – Present",
     type: "Full-time",
     description: "Delivering customer support services as a specialist, handling inquiries and resolving issues to maintain high satisfaction standards.",
     highlights: ["Customer Support", "Issue Resolution", "Quality Service"],
@@ -12,7 +12,7 @@ const experiences = [
   {
     role: "Application Support Specialist",
     company: "EasyPOS Solutions INC",
-    period: "Oct 2024 – May 2025",
+    period: "Oct 2024 – April 2025",
     type: "Full-time",
     description: "Provided application-level support for EasyPOS software clients, troubleshot system issues, assisted with onboarding, and coordinated with technical teams for escalations.",
     highlights: ["App Troubleshooting", "Client Onboarding", "Technical Escalations"],
