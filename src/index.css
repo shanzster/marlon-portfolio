@@ -5,24 +5,27 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 30 20% 99%;
-    --foreground: 220 25% 14%;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {    --background: 0 0% 99%;
+    --foreground: 220 20% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 14%;
+    --card-foreground: 220 20% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 14%;
+    --popover-foreground: 220 20% 12%;
 
     --primary: 25 95% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 15% 93%;
+    --secondary: 220 10% 96%;
     --secondary-foreground: 220 20% 18%;
 
-    --muted: 30 10% 94%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 50%;
 
     --accent: 195 70% 42%;
     --accent-foreground: 0 0% 100%;
@@ -30,11 +33,11 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 90%;
-    --input: 30 15% 90%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 25 95% 53%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -59,87 +62,71 @@
 }
 
 @layer utilities {
-  .neu-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    box-shadow:
-      8px 8px 20px hsl(220 15% 82% / 0.35),
-      -8px -8px 20px hsl(0 0% 100% / 0.9);
-    @apply rounded-2xl border border-white/60;
+  /* Clean minimal card — single subtle shadow + border */
+  .soft-card {
+    @apply bg-white border border-border rounded-xl;
+    box-shadow: 0 1px 4px hsl(220 15% 88% / 0.6);
   }
 
-  .neu-card-sm {
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(8px);
-    box-shadow:
-      4px 4px 10px hsl(220 15% 82% / 0.3),
-      -4px -4px 10px hsl(0 0% 100% / 0.8);
-    @apply rounded-xl border border-white/50;
-  }
-
-  .neu-inset {
-    box-shadow:
-      inset 3px 3px 6px hsl(220 10% 85% / 0.35),
-      inset -3px -3px 6px hsl(0 0% 100% / 0.6);
-    @apply rounded-xl;
-  }
-
-  /* Lovable-style mesh gradients */
-  .gradient-hero {
-    background:
-      radial-gradient(ellipse 80% 60% at 10% 20%, hsl(25 100% 70% / 0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 80%, hsl(195 80% 55% / 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse 70% 50% at 50% 0%, hsl(35 100% 75% / 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 40% at 80% 20%, hsl(340 60% 70% / 0.06) 0%, transparent 50%),
-      linear-gradient(180deg, hsl(30 30% 99%) 0%, hsl(30 20% 97%) 100%);
-  }
-
-  .gradient-section-warm {
-    background:
-      radial-gradient(ellipse 60% 50% at 0% 50%, hsl(25 100% 70% / 0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 60% at 100% 30%, hsl(195 80% 55% / 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 40% at 50% 100%, hsl(35 90% 80% / 0.08) 0%, transparent 40%),
-      linear-gradient(180deg, hsl(30 20% 98%) 0%, hsl(30 25% 97%) 100%);
-  }
-
-  .gradient-section-cool {
-    background:
-      radial-gradient(ellipse 70% 50% at 100% 50%, hsl(195 80% 60% / 0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 0% 20%, hsl(25 90% 65% / 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 50% at 50% 80%, hsl(340 50% 75% / 0.05) 0%, transparent 50%),
-      linear-gradient(180deg, hsl(30 15% 98%) 0%, hsl(30 20% 97%) 100%);
-  }
-
-  .gradient-section-accent {
-    background:
-      radial-gradient(ellipse 50% 40% at 20% 80%, hsl(25 95% 60% / 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 50% at 80% 10%, hsl(195 70% 50% / 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 60% at 50% 50%, hsl(35 80% 80% / 0.06) 0%, transparent 40%),
-      linear-gradient(180deg, hsl(30 20% 97%) 0%, hsl(30 25% 98%) 100%);
-  }
-
-  .gradient-btn-primary {
-    background: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(15 90% 48%) 100%);
-    box-shadow: 0 4px 15px hsl(25 95% 53% / 0.35);
-  }
-
-  .gradient-btn-primary:hover {
-    box-shadow: 0 6px 20px hsl(25 95% 53% / 0.45);
-  }
-
-  .avatar-glow {
-    box-shadow:
-      0 0 40px hsl(25 95% 53% / 0.2),
-      0 0 80px hsl(25 95% 53% / 0.1),
-      8px 8px 20px hsl(220 15% 82% / 0.3),
-      -8px -8px 20px hsl(0 0% 100% / 0.8);
-  }
-
+  /* Section title — plain, no gradient clip */
   .section-title {
-    @apply text-3xl font-bold text-foreground text-center mb-2;
-    background: linear-gradient(135deg, hsl(220 25% 14%) 0%, hsl(220 15% 30%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply text-2xl font-semibold text-foreground text-center mb-2;
+  }
+
+  /* Section title accent underline */
+  .section-title-underline {
+    @apply w-8 h-0.5 bg-primary mx-auto mt-2 mb-10 rounded-full;
+  }
+
+  /* Primary button — solid, no gradient */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold text-sm px-7 py-3 rounded-lg transition-opacity duration-200;
+  }
+  .btn-primary:hover {
+    @apply opacity-90;
+  }
+
+  /* Secondary / ghost button */
+  .btn-secondary {
+    @apply bg-white border border-border text-foreground font-semibold text-sm px-7 py-3 rounded-lg transition-colors duration-200;
+  }
+  .btn-secondary:hover {
+    @apply bg-muted;
+  }
+
+  /* Alternating section backgrounds */
+  .section-white {
+    @apply bg-background;
+  }
+
+  .section-muted {
+    background-color: hsl(220 10% 97%);
+  }
+
+  /* Hero sunrise — wide strong glow rising from bottom center */
+  .hero-sunrise {
+    background-color: hsl(0 0% 99%);
+    position: relative;
+  }
+
+  .hero-sunrise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 140% 70% at 50% 100%, hsl(25 100% 55% / 0.75) 0%, hsl(28 100% 58% / 0.50) 25%, hsl(32 95% 62% / 0.25) 50%, transparent 70%),
+      radial-gradient(ellipse 80% 45% at 50% 100%, hsl(20 100% 50% / 0.55) 0%, transparent 50%);
+    filter: blur(48px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-sunrise::after {
+    display: none;
+  }
+
+  .hero-sunrise > * {
+    position: relative;
+    z-index: 1;
   }
 }

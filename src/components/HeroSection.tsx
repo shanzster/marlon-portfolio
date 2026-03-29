@@ -1,74 +1,87 @@
-import avatarPlaceholder from "@/assets/avatar-placeholder.png";
-import { MapPin, Mail, Briefcase } from "lucide-react";
+import { MapPin, ArrowDown, Clock, Star, Headphones } from "lucide-react";
+
+const stats = [
+  { icon: Clock, value: "5+", label: "Years Experience" },
+  { icon: Star, value: "95%", label: "CSAT Score" },
+  { icon: Headphones, value: "200+", label: "Tickets / Week" },
+];
 
 const HeroSection = () => {
   return (
-    <section className="gradient-hero min-h-screen flex items-center pt-14">
-      <div className="container mx-auto px-6 py-16">
-        <div className="flex flex-col items-center text-center lg:text-left lg:flex-row lg:items-center lg:justify-between gap-12">
-          {/* Avatar - shows on top for mobile, right side for desktop */}
-          <div className="lg:order-2 flex-shrink-0">
-            <div className="w-56 h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden avatar-glow border-4 border-white/60">
-              <img
-                src={avatarPlaceholder}
-                alt="Marlon Elago"
-                width={320}
-                height={320}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+    <section className="hero-sunrise relative flex flex-col items-center justify-center pt-14 px-6 rounded-b-[2.5rem] overflow-hidden" style={{ minHeight: '100vh' }}>
 
-          {/* Text */}
-          <div className="lg:order-1 max-w-xl">
-            <div className="inline-block mb-4">
-              <span className="text-xs font-semibold tracking-widest uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full">
-                Customer Representative Agent
-              </span>
-            </div>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-              Hi, I'm{" "}
-              <span className="text-primary">Marlon Elago</span>
-            </h1>
-            <p className="text-muted-foreground text-sm lg:text-base leading-relaxed mb-8">
-              Dedicated customer service professional with a passion for
-              delivering exceptional support experiences. I specialize in
-              resolving issues efficiently while maintaining positive
-              relationships with every customer.
-            </p>
-
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
-              <div className="neu-card-sm px-4 py-2 flex items-center gap-2 text-xs text-muted-foreground">
-                <MapPin className="w-3.5 h-3.5 text-primary" />
-                <span>Philippines</span>
-              </div>
-              <div className="neu-card-sm px-4 py-2 flex items-center gap-2 text-xs text-muted-foreground">
-                <Mail className="w-3.5 h-3.5 text-primary" />
-                <span>marlon@email.com</span>
-              </div>
-              <div className="neu-card-sm px-4 py-2 flex items-center gap-2 text-xs text-muted-foreground">
-                <Briefcase className="w-3.5 h-3.5 text-primary" />
-                <span>Open to Work</span>
-              </div>
-            </div>
-
-            <div className="flex justify-center lg:justify-start gap-4">
-              <a
-                href="#contact"
-                className="gradient-btn-primary px-7 py-3 rounded-xl text-primary-foreground font-semibold text-sm transition-all duration-200 hover:scale-[1.02]"
-              >
-                Get in Touch
-              </a>
-              <a
-                href="#video"
-                className="neu-card-sm px-7 py-3 text-foreground font-semibold text-sm hover:scale-[1.02] transition-all duration-200"
-              >
-                Watch Intro
-              </a>
-            </div>
-          </div>
+      {/* Avatar */}
+      <div className="relative mb-3 mt-6">
+        <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-border shadow-sm">
+          <img
+            src="/2x2.jpg"
+            alt="Marlon Elago"
+            width={80}
+            height={80}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
+
+      {/* Role badge */}
+      <span className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground bg-white border border-border px-4 py-1 rounded-full mb-4 shadow-sm">
+        Customer Experience Associate / Support Specialist
+      </span>
+
+      {/* Name */}
+      <div className="mb-3">
+        <span className="block text-sm font-medium text-muted-foreground mb-0.5">Hi, I'm</span>
+        <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+          Marlon <span className="text-primary">Elago</span>
+        </h1>
+      </div>
+
+      {/* Bio */}
+      <p className="text-muted-foreground text-sm leading-relaxed text-center max-w-lg mb-5">
+        Customer service professional with 5+ years delivering exceptional
+        support across phone, email, and live chat — known for fast resolution,
+        high satisfaction scores, and keeping every interaction human.
+      </p>
+
+      {/* Stats row */}
+      <div className="flex flex-wrap justify-center gap-2 mb-5">
+        {stats.map(({ icon: Icon, value, label }) => (
+          <div key={label} className="flex items-center gap-2 bg-white border border-border rounded-xl px-3 py-2 shadow-sm">
+            <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Icon className="w-3 h-3 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-foreground leading-none">{value}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Meta chips */}
+      <div className="flex flex-wrap justify-center gap-2 mb-6">
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-white border border-border px-3 py-1.5 rounded-full shadow-sm">
+          <MapPin className="w-3 h-3 text-primary" />
+          Philippines · Remote-ready
+        </div>
+      </div>
+
+      {/* CTAs */}
+      <div className="flex gap-3 mb-8">
+        <a href="#contact" className="btn-primary">
+          Get in Touch
+        </a>
+        <a href="/public/Elago_Marlon_CV.pdf" download className="btn-secondary flex items-center gap-2">
+          Download Resume
+        </a>
+      </div>
+
+      {/* Scroll hint */}
+      <a href="#tools" className="flex flex-col items-center gap-1 text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+        <span className="text-[10px] tracking-widest uppercase text-white/60">Scroll</span>
+        <ArrowDown className="w-3.5 h-3.5 animate-bounce text-white/60" />
+      </a>
+
     </section>
   );
 };
