@@ -63,7 +63,7 @@ const tools = [
     howIUsedIt: "Logged customer interactions, updated contact records, and tracked case history to ensure continuity of support.",
   },
   {
-    name: "Genesis",
+    name: "Genesys",
     category: "CRM",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkgfNCoW234b_N87_AX_P5pG969FaSWetcYg&s",
     usedAt: "Buwelo",
