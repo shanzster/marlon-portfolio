@@ -2,7 +2,7 @@ const setup = [
   {
     name: "Dell Latitude Laptop",
     detail: "My Primary Machine",
-    image: "/public/dell-laptop.jpg",
+    image: "/dell-laptop.jpg",
     specs: [
       "Intel Core i5 processor",
       "16 GB RAM",
@@ -13,7 +13,7 @@ const setup = [
   {
     name: "External Monitor",
     detail: "22-inch Display",
-    image: "/public/22-monitor.png",
+    image: "/22-monitor.png",
     specs: [
       "22-inch full HD display",
       "Extended workspace setup",

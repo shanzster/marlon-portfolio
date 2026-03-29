@@ -24,7 +24,7 @@ const HeroSection = () => {
       </div>
 
       {/* Role badge */}
-      <span className="text-[11px] font-semibold tracking-widest uppercase text-muted-foreground bg-white border border-border px-4 py-1 rounded-full mb-4 shadow-sm">
+      <span className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground bg-white border border-border px-3 py-1 rounded-full mb-4 shadow-sm text-center">
         Customer Experience Associate / Support Specialist
       </span>
 
@@ -43,16 +43,16 @@ const HeroSection = () => {
         high satisfaction scores, and keeping every interaction human.
       </p>
 
-      {/* Stats row */}
-      <div className="flex flex-wrap justify-center gap-2 mb-5">
+      {/* Stats row — always single row, shrink on mobile */}
+      <div className="flex justify-center gap-2 mb-5 w-full max-w-sm">
         {stats.map(({ icon: Icon, value, label }) => (
-          <div key={label} className="flex items-center gap-2 bg-white border border-border rounded-xl px-3 py-2 shadow-sm">
-            <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <Icon className="w-3 h-3 text-primary" />
+          <div key={label} className="flex-1 flex items-center gap-1.5 bg-white border border-border rounded-xl px-2 py-2 shadow-sm min-w-0">
+            <div className="w-5 h-5 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Icon className="w-2.5 h-2.5 text-primary" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-bold text-foreground leading-none">{value}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
+              <p className="text-[9px] text-muted-foreground mt-0.5 leading-tight">{label}</p>
             </div>
           </div>
         ))}
@@ -67,11 +67,11 @@ const HeroSection = () => {
       </div>
 
       {/* CTAs */}
-      <div className="flex gap-3 mb-8">
-        <a href="#contact" className="btn-primary">
+      <div className="flex gap-2 mb-8 w-full max-w-sm">
+        <a href="#contact" className="btn-primary flex-1 text-center text-xs px-3 py-2.5">
           Get in Touch
         </a>
-        <a href="/public/Elago_Marlon_CV.pdf" download className="btn-secondary flex items-center gap-2">
+        <a href="/public/Elago_Marlon_CV.pdf" download className="btn-secondary flex-1 text-center text-xs px-3 py-2.5">
           Download Resume
         </a>
       </div>
