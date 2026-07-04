@@ -56,9 +56,27 @@ const SetupSection = () => {
         </p>
         <h2 className="section-title">Setup & Equipment</h2>
         <div className="section-title-underline" />
-        <p className="text-muted-foreground text-center text-sm mb-14 -mt-6">
+        <p className="text-muted-foreground text-center text-sm mb-8 -mt-6">
           Built for reliability — everything I need to deliver consistent, professional support
         </p>
+
+        {/* Power highlight banner */}
+        <div className="max-w-5xl mx-auto mb-10 flex items-center gap-4 rounded-xl border px-5 py-4"
+          style={{ background: 'hsl(45 95% 53% / 0.06)', borderColor: 'hsl(45 95% 53% / 0.25)' }}>
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+            style={{ background: 'hsl(45 95% 53% / 0.15)' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="hsl(40 95% 45%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">Solar-Powered Home with Battery Backup</p>
+            <p className="text-[12px] text-muted-foreground mt-0.5">
+              My house runs on solar energy with a battery backup system that can sustain power for days — ensuring zero downtime even during outages.
+            </p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
           {setup.map(({ name, detail, image, specs }) => (

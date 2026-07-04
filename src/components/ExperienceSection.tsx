@@ -1,29 +1,41 @@
-import { Calendar, Building2, TrendingUp } from "lucide-react";
+import { Calendar, Building2, TrendingUp, Award, Globe } from "lucide-react";
 
 const experiences = [
   {
     role: "Customer Support Specialist",
-    company: "Buwelo",
-    period: "2025 – Present",
+    company: "NUSKIN - Australian Based Skincare Company",
+    period: "2025 – 2026",
     type: "Full-time",
+    clients: "New Zealand & Australia",
     description: "Delivering customer support services as a specialist, handling inquiries and resolving issues to maintain high satisfaction standards.",
     highlights: ["Customer Support", "Issue Resolution", "Quality Service"],
+    awards: [
+      { title: "Top Agent of the Month", date: "November 2025 - July 2026" },
+    ],
   },
   {
     role: "Application Support Specialist",
     company: "EasyPOS Solutions INC",
     period: "Oct 2024 – April 2025",
     type: "Full-time",
+    clients: "Australia",
     description: "Provided application-level support for EasyPOS software clients, troubleshot system issues, assisted with onboarding, and coordinated with technical teams for escalations.",
     highlights: ["App Troubleshooting", "Client Onboarding", "Technical Escalations"],
+    awards: [
+      { title: "Best Onboarding Specialist", date: "February 2025" }
+    ],
   },
   {
     role: "Customer Service Support",
-    company: "IQOR (WFH)",
+    company: "Pizza Hut Deliverit (WFH)",
     period: "2022 – 2024",
     type: "Remote",
+    clients: "USA",
     description: "Handled inbound customer service for a work-from-home setup, managing inquiries, complaints, and account-related concerns across multiple channels.",
     highlights: ["WFH Setup", "Inbound Support", "Account Management"],
+    awards: [
+      { title: "Best POS Support", date: "2023" },
+    ],
   },
 ];
 
@@ -67,6 +79,10 @@ const ExperienceSection = () => {
                       <span className="text-border">·</span>
                       <span className="text-[10px]">{exp.type}</span>
                     </div>
+                    <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-1">
+                      <Globe className="w-3 h-3 flex-shrink-0" />
+                      <span>Clients: <span className="font-medium text-foreground">{exp.clients}</span></span>
+                    </div>
                   </div>
                   <span className="text-[10px] font-medium text-muted-foreground bg-background border border-border px-3 py-1 rounded-full flex items-center gap-1 w-fit whitespace-nowrap">
                     <Calendar className="w-2.5 h-2.5" />
@@ -93,6 +109,30 @@ const ExperienceSection = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Awards & Recognition */}
+                {exp.awards && exp.awards.length > 0 && (
+                  <div className="mt-4">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <Award className="w-3 h-3 text-amber-500" />
+                      <span className="text-[10px] font-semibold text-amber-500 uppercase tracking-wide">Awards & Recognition</span>
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      {exp.awards.map((award) => (
+                        <div
+                          key={award.title}
+                          className="flex items-center justify-between px-3 py-2 rounded-lg border"
+                          style={{ background: 'hsl(45 95% 53% / 0.06)', borderColor: 'hsl(45 95% 53% / 0.2)' }}
+                        >
+                          <span className="text-[11px] font-medium text-foreground">{award.title}</span>
+                          {award.date && (
+                            <span className="text-[10px] text-muted-foreground ml-3 whitespace-nowrap">{award.date}</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
             </div>

@@ -71,7 +71,7 @@ const HeroSection = () => {
         <a href="#contact" className="btn-primary">
           Get in Touch
         </a>
-        <a href="/Elago_Marlon_CV.pdf" download className="btn-secondary">
+        <a href="/ElagoMarlon_CV.pdf" download className="btn-secondary">
           Download Resume
         </a>
       </div>
