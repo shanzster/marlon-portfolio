@@ -26,6 +26,18 @@ const experiences = [
     ],
   },
   {
+    role: "Seasonal Sales & Customer Service Representative",
+    company: "Extra Space Storage / Life Storage / Storage Express",
+    period: "05/2024 – 10/2024",
+    type: "Seasonal",
+    clients: "United States",
+    description: "Provided first-level technical support for 50–70 Australian business clients daily via phone, email, and live chat. Resolved 85%+ of Level 1 POS software issues on first contact through troubleshooting and remote support. Escalated complex incidents while maintaining 100% documentation accuracy. Consistently met response time, resolution time, and quality KPIs.",
+    highlights: ["Technical Support", "Remote Troubleshooting", "POS Software", "KPI Achievement"],
+    awards: [
+      { title: "Employee of the Month", date: "2 months" },
+    ],
+  },
+  {
     role: "Customer Service Support",
     company: "Pizza Hut Deliverit (WFH)",
     period: "2022 – 2024",
