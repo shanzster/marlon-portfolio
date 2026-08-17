@@ -19,6 +19,13 @@ import {
   Layers,
   Search,
   BookOpen,
+  ShoppingBag,
+  Package,
+  Sparkles,
+  Bot,
+  Cpu,
+  HeartHandshake,
+  type LucideIcon,
 } from "lucide-react";
 
 const technicalSkills = [
@@ -34,6 +41,10 @@ const technicalSkills = [
   { icon: Search, label: "Knowledge Base Navigation" },
   { icon: FileText, label: "Documentation" },
   { icon: BookOpen, label: "Client Onboarding" },
+  { icon: ShoppingBag, label: "Shopify Backend" },
+  { icon: Package, label: "Product Listing Management" },
+  { icon: Bot, label: "AI-Assisted Workflows" },
+  { icon: Sparkles, label: "AI Product Imaging" },
 ];
 
 const operationalSkills = [
@@ -51,6 +62,69 @@ const operationalSkills = [
   { icon: Globe, label: "Multilingual Communication" },
 ];
 
+type Skill = { icon: LucideIcon; label: string };
+
+const SkillPanel = ({
+  title,
+  subtitle,
+  icon: Icon,
+  accent,
+  skills,
+}: {
+  title: string;
+  subtitle: string;
+  icon: LucideIcon;
+  accent: string;
+  skills: Skill[];
+}) => (
+  <div
+    className="soft-card p-6"
+    style={{ borderTop: `3px solid ${accent}` }}
+  >
+    {/* Panel header */}
+    <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center gap-3">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{ background: `color-mix(in srgb, ${accent} 14%, white)`, color: accent }}
+        >
+          <Icon className="w-4.5 h-4.5" style={{ width: 18, height: 18 }} />
+        </div>
+        <div>
+          <h3 className="text-sm font-semibold text-foreground leading-tight">{title}</h3>
+          <p className="text-[11px] text-muted-foreground">{subtitle}</p>
+        </div>
+      </div>
+      <span
+        className="text-[11px] font-bold px-2.5 py-1 rounded-full leading-none"
+        style={{ background: `color-mix(in srgb, ${accent} 12%, white)`, color: accent }}
+      >
+        {skills.length}
+      </span>
+    </div>
+
+    {/* Chips */}
+    <div className="flex flex-wrap gap-2.5">
+      {skills.map((skill, i) => (
+        <div
+          key={skill.label}
+          className="skill-chip group animate-fade-up flex items-center gap-2 px-3 py-2 rounded-xl border bg-white cursor-default"
+          style={{
+            ["--accent" as string]: accent,
+            animationDelay: `${i * 35}ms`,
+            borderColor: `color-mix(in srgb, ${accent} 16%, hsl(220 13% 91%))`,
+          }}
+        >
+          <div className="skill-ico w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0">
+            <skill.icon style={{ width: 14, height: 14 }} />
+          </div>
+          <span className="text-xs font-medium text-foreground whitespace-nowrap">{skill.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const SkillsSection = () => {
   return (
     <section id="skills" className="section-white py-24">
@@ -63,59 +137,24 @@ const SkillsSection = () => {
         <h2 className="section-title">Skills & Expertise</h2>
         <div className="section-title-underline" />
         <p className="text-muted-foreground text-center text-sm mb-14 -mt-6">
-          Core competencies built through years of hands-on customer service
+          Core competencies built through 7+ years of hands-on customer service
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-
-          {/* Technical Skills */}
-          <div>
-            <div className="flex items-center gap-2 mb-5">
-              <span className="w-1 h-4 rounded-full bg-primary" />
-              <h3 className="text-sm font-semibold text-foreground">Technical Skills</h3>
-            </div>
-            <div className="flex flex-wrap gap-2.5">
-              {technicalSkills.map((skill) => (
-                <div
-                  key={skill.label}
-                  className="soft-card flex items-center gap-2 px-3.5 py-2.5 hover:shadow-md transition-shadow duration-200"
-                >
-                  <div
-                    className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
-                    style={{ background: "hsl(25 95% 53% / 0.08)" }}
-                  >
-                    <skill.icon style={{ width: 14, height: 14 }} className="text-primary" />
-                  </div>
-                  <span className="text-xs font-medium text-foreground whitespace-nowrap">{skill.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Operational Skills */}
-          <div>
-            <div className="flex items-center gap-2 mb-5">
-              <span className="w-1 h-4 rounded-full bg-accent" />
-              <h3 className="text-sm font-semibold text-foreground">Operational Skills</h3>
-            </div>
-            <div className="flex flex-wrap gap-2.5">
-              {operationalSkills.map((skill) => (
-                <div
-                  key={skill.label}
-                  className="soft-card flex items-center gap-2 px-3.5 py-2.5 hover:shadow-md transition-shadow duration-200"
-                >
-                  <div
-                    className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
-                    style={{ background: "hsl(25 95% 53% / 0.08)" }}
-                  >
-                    <skill.icon style={{ width: 14, height: 14 }} className="text-primary" />
-                  </div>
-                  <span className="text-xs font-medium text-foreground whitespace-nowrap">{skill.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div className="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto items-start">
+          <SkillPanel
+            title="Technical Skills"
+            subtitle="Tools, systems & platforms"
+            icon={Cpu}
+            accent="#3b82f6"
+            skills={technicalSkills}
+          />
+          <SkillPanel
+            title="Operational Skills"
+            subtitle="People, service & soft skills"
+            icon={HeartHandshake}
+            accent="#14b8a6"
+            skills={operationalSkills}
+          />
         </div>
       </div>
     </section>

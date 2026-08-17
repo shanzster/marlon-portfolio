@@ -18,7 +18,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 12%;
 
-    --primary: 25 95% 53%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 10% 96%;
@@ -35,7 +35,7 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 25 95% 53%;
+    --ring: 221 83% 53%;
 
     --radius: 0.75rem;
 
@@ -114,8 +114,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 140% 70% at 50% 100%, hsl(25 100% 55% / 0.75) 0%, hsl(28 100% 58% / 0.50) 25%, hsl(32 95% 62% / 0.25) 50%, transparent 70%),
-      radial-gradient(ellipse 80% 45% at 50% 100%, hsl(20 100% 50% / 0.55) 0%, transparent 50%);
+      radial-gradient(ellipse 140% 70% at 50% 100%, hsl(221 90% 60% / 0.65) 0%, hsl(213 92% 62% / 0.42) 25%, hsl(205 90% 66% / 0.22) 50%, transparent 70%),
+      radial-gradient(ellipse 80% 45% at 50% 100%, hsl(224 88% 56% / 0.5) 0%, transparent 50%);
     filter: blur(48px);
     pointer-events: none;
     z-index: 0;
@@ -125,8 +125,180 @@
     display: none;
   }
 
-  .hero-sunrise > * {
+  /* Lift real content above the ::before glow without forcing position
+     on absolutely-positioned decorative children (orbs, scroll hint). */
+  .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 10;
+  }
+
+  /* ---------- Themed, interactive tool cards (per-category --accent) ---------- */
+  .tool-card {
+    position: relative;
+    border-top: 3px solid var(--accent, hsl(var(--border)));
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+  .tool-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 32px color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+  /* Icon tile picks up a soft tint of the category color, pops on hover */
+  .tool-tile {
+    background: color-mix(in srgb, var(--accent) 12%, white);
+    color: var(--accent);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background 0.28s ease;
+  }
+  .tool-card:hover .tool-tile {
+    background: color-mix(in srgb, var(--accent) 20%, white);
+    transform: scale(1.1) rotate(-4deg);
+  }
+  /* Corner arrow that slides in on hover */
+  .tool-arrow {
+    color: var(--accent);
+    opacity: 0;
+    transform: translate(-5px, 5px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+  .tool-card:hover .tool-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  /* "Used at" label dot tinted per category */
+  .tool-dot { background: var(--accent); }
+
+  /* ---------- Themed skill chips (per-group --accent) ---------- */
+  .skill-chip {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .skill-chip:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent) !important;
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  .skill-ico {
+    background: color-mix(in srgb, var(--accent) 14%, white);
+    color: var(--accent);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, color 0.25s ease;
+  }
+  .skill-chip:hover .skill-ico {
+    background: var(--accent);
+    color: #fff;
+    transform: rotate(-6deg) scale(1.1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-chip, .skill-chip:hover,
+    .skill-ico, .skill-chip:hover .skill-ico { transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tool-card, .tool-card:hover,
+    .tool-tile, .tool-card:hover .tool-tile { transform: none; }
+    .tool-arrow { transition: opacity 0.2s ease; transform: none; }
+  }
+
+  /* ---------- Interactive / animation toolkit ---------- */
+
+  /* Staggered entrance — pair with inline animationDelay */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Gentle float loop for decorative orbs / avatar */
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  .animate-float { animation: floatY 6s ease-in-out infinite; }
+
+  /* Expanding pulse ring (availability dot / avatar) */
+  @keyframes pulseRing {
+    0%   { transform: scale(0.85); opacity: 0.55; }
+    70%  { transform: scale(1.7);  opacity: 0; }
+    100% { opacity: 0; }
+  }
+  .animate-pulse-ring { animation: pulseRing 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+  /* Slowly rotating conic glow behind the avatar */
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+  .animate-spin-slow { animation: spinSlow 8s linear infinite; }
+
+  /* Animated gradient sweep for the name */
+  @keyframes shimmer {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  .text-gradient-animate {
+    background: linear-gradient(90deg,
+      hsl(221 83% 53%), hsl(205 90% 50%), hsl(230 85% 62%), hsl(221 83% 53%));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shimmer 5s linear infinite;
+  }
+
+  /* Typewriter caret */
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .caret-blink { animation: blink 1s step-end infinite; }
+
+  /* Interactive lift used on hero stat cards */
+  .lift-hover {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  }
+  .lift-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px hsl(221 70% 50% / 0.2);
+  }
+
+  /* Primary CTA — shine + lift on hover */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 16px hsl(221 83% 53% / 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px hsl(221 83% 53% / 0.38);
+    opacity: 1;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, hsl(0 0% 100% / 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .btn-primary:hover::after { left: 130%; }
+
+  .btn-secondary {
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: hsl(221 83% 53% / 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up { opacity: 1; animation: none; }
+    .animate-float,
+    .animate-pulse-ring,
+    .animate-spin-slow,
+    .text-gradient-animate,
+    .caret-blink { animation: none; }
   }
 }

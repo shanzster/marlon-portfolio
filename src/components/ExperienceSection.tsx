@@ -115,7 +115,7 @@ const ExperienceSection = () => {
                     <span
                       key={h}
                       className="text-[10px] font-medium px-3 py-1 rounded-full border"
-                      style={{ background: 'hsl(25 95% 53% / 0.07)', borderColor: 'hsl(25 95% 53% / 0.2)', color: 'hsl(25 95% 40%)' }}
+                      style={{ background: 'hsl(221 83% 53% / 0.07)', borderColor: 'hsl(221 83% 53% / 0.2)', color: 'hsl(221 83% 45%)' }}
                     >
                       {h}
                     </span>
