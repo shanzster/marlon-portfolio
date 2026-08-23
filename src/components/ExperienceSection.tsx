@@ -1,4 +1,8 @@
 import { Calendar, Building2, TrendingUp, Award, Globe } from "lucide-react";
+import Reveal from "./Reveal";
+
+// Cohesive per-role accent palette (blue → sky → indigo → teal)
+const accents = ["#3b82f6", "#0ea5e9", "#6366f1", "#14b8a6"];
 
 const experiences = [
   {
@@ -67,21 +71,31 @@ const ExperienceSection = () => {
         </p>
 
         <div className="max-w-3xl mx-auto">
-          {experiences.map((exp, index) => (
-            <div key={index} className="flex gap-6 mb-8 last:mb-0">
+          {experiences.map((exp, index) => {
+            const accent = accents[index % accents.length];
+            const isLast = index === experiences.length - 1;
+            return (
+            <Reveal key={index} delay={index * 90} className={isLast ? "" : "mb-8"}>
+            <div className="flex gap-6">
 
               {/* Timeline column */}
               <div className="flex flex-col items-center flex-shrink-0">
                 {/* Dot */}
-                <div className="w-3 h-3 rounded-full bg-primary border-2 border-white shadow-sm mt-5 flex-shrink-0" />
+                <div
+                  className="relative w-3.5 h-3.5 rounded-full border-2 border-white shadow-sm mt-5 flex-shrink-0"
+                  style={{ background: accent, boxShadow: `0 0 0 4px color-mix(in srgb, ${accent} 15%, transparent)` }}
+                />
                 {/* Line — hidden on last item */}
-                {index < experiences.length - 1 && (
+                {!isLast && (
                   <div className="w-px flex-1 bg-border mt-2" />
                 )}
               </div>
 
               {/* Card */}
-              <div className="flex-1 soft-card p-6 hover:shadow-md transition-shadow duration-200 mb-0">
+              <div
+                className="tool-card group flex-1 soft-card p-6"
+                style={{ ["--accent" as string]: accent }}
+              >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                   <div>
                     <h3 className="font-semibold text-foreground text-sm">{exp.role}</h3>
@@ -89,7 +103,12 @@ const ExperienceSection = () => {
                       <Building2 className="w-3 h-3" />
                       <span>{exp.company}</span>
                       <span className="text-border">·</span>
-                      <span className="text-[10px]">{exp.type}</span>
+                      <span
+                        className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
+                        style={{ color: accent, background: `color-mix(in srgb, ${accent} 10%, white)` }}
+                      >
+                        {exp.type}
+                      </span>
                     </div>
                     <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-1">
                       <Globe className="w-3 h-3 flex-shrink-0" />
@@ -107,15 +126,19 @@ const ExperienceSection = () => {
                 </p>
 
                 <div className="flex items-center gap-1.5 mb-2">
-                  <TrendingUp className="w-3 h-3 text-primary" />
-                  <span className="text-[10px] font-semibold text-primary uppercase tracking-wide">Key Achievements</span>
+                  <TrendingUp className="w-3 h-3" style={{ color: accent }} />
+                  <span className="text-[10px] font-semibold uppercase tracking-wide" style={{ color: accent }}>Key Achievements</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {exp.highlights.map((h) => (
                     <span
                       key={h}
                       className="text-[10px] font-medium px-3 py-1 rounded-full border"
-                      style={{ background: 'hsl(221 83% 53% / 0.07)', borderColor: 'hsl(221 83% 53% / 0.2)', color: 'hsl(221 83% 45%)' }}
+                      style={{
+                        background: `color-mix(in srgb, ${accent} 8%, white)`,
+                        borderColor: `color-mix(in srgb, ${accent} 22%, transparent)`,
+                        color: `color-mix(in srgb, ${accent} 75%, black)`,
+                      }}
                     >
                       {h}
                     </span>
@@ -148,7 +171,9 @@ const ExperienceSection = () => {
               </div>
 
             </div>
-          ))}
+            </Reveal>
+            );
+          })}
         </div>
 
       </div>

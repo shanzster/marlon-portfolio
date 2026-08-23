@@ -1,4 +1,8 @@
 import { GraduationCap, Award, CheckCircle2 } from "lucide-react";
+import Reveal from "./Reveal";
+
+const EDU_ACCENT = "#3b82f6";
+const CERT_ACCENT = "#f59e0b";
 
 const education = [
   {
@@ -48,23 +52,25 @@ const EducationSection = () => {
           {/* Education */}
           <div>
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
-                <GraduationCap className="w-3.5 h-3.5 text-primary" />
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `color-mix(in srgb, ${EDU_ACCENT} 12%, white)`, color: EDU_ACCENT }}>
+                <GraduationCap className="w-3.5 h-3.5" />
               </div>
               <h3 className="text-sm font-semibold text-foreground">Education</h3>
             </div>
             <div className="space-y-3">
               {education.map((edu, i) => (
-                <div key={i} className="soft-card p-5 hover:shadow-md transition-shadow duration-200">
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <h4 className="font-semibold text-foreground text-sm leading-snug">{edu.degree}</h4>
-                    {edu.year && <span className="text-[10px] text-muted-foreground whitespace-nowrap mt-0.5">{edu.year}</span>}
+                <Reveal key={i} delay={i * 90}>
+                  <div className="tool-card group soft-card p-5" style={{ ["--accent" as string]: EDU_ACCENT }}>
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-semibold text-foreground text-sm leading-snug">{edu.degree}</h4>
+                      {edu.year && <span className="text-[10px] text-muted-foreground whitespace-nowrap mt-0.5">{edu.year}</span>}
+                    </div>
+                    {edu.major && <p className="text-xs font-medium mb-0.5" style={{ color: EDU_ACCENT }}>{edu.major}</p>}
+                    <p className="text-xs font-medium text-foreground mb-0.5">{edu.school}</p>
+                    <p className="text-[10px] text-muted-foreground mb-2">{edu.location}</p>
+                    {edu.details && <p className="text-xs text-muted-foreground leading-relaxed">{edu.details}</p>}
                   </div>
-                  {edu.major && <p className="text-xs text-primary font-medium mb-0.5">{edu.major}</p>}
-                  <p className="text-xs font-medium text-foreground mb-0.5">{edu.school}</p>
-                  <p className="text-[10px] text-muted-foreground mb-2">{edu.location}</p>
-                  {edu.details && <p className="text-xs text-muted-foreground leading-relaxed">{edu.details}</p>}
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -72,23 +78,28 @@ const EducationSection = () => {
           {/* Certifications */}
           <div>
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Award className="w-3.5 h-3.5 text-accent" />
+              <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `color-mix(in srgb, ${CERT_ACCENT} 14%, white)`, color: CERT_ACCENT }}>
+                <Award className="w-3.5 h-3.5" />
               </div>
               <h3 className="text-sm font-semibold text-foreground">Certifications</h3>
             </div>
-            <div className="soft-card p-5">
-              <ul className="space-y-4">
-                {certifications.map((cert, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="grid gap-2.5">
+              {certifications.map((cert, i) => (
+                <Reveal key={i} delay={i * 60}>
+                  <div
+                    className="skill-chip group soft-card flex items-start gap-3 p-3.5"
+                    style={{ ["--accent" as string]: CERT_ACCENT }}
+                  >
+                    <div className="skill-ico w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 className="w-4 h-4" />
+                    </div>
                     <div>
                       <p className="text-sm font-medium text-foreground leading-tight">{cert.name}</p>
                       <p className="text-[10px] text-muted-foreground mt-0.5">{cert.issuer}</p>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import Reveal from "./Reveal";
 
 const ContactSection = () => {
   return (
@@ -16,13 +17,14 @@ const ContactSection = () => {
         </p>
 
         <div className="max-w-2xl mx-auto">
+          <Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             <a
               href="mailto:elagomarlon@gmail.com"
-              className="soft-card p-6 flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow duration-200 group"
+              className="soft-card lift-hover p-6 flex flex-col items-center text-center gap-3 group"
             >
-              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
-                <Mail className="w-5 h-5 text-primary" />
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white text-primary transition-colors duration-200">
+                <Mail className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs font-semibold text-foreground">Email</p>
@@ -32,10 +34,10 @@ const ContactSection = () => {
 
             <a
               href="tel:+639455812187"
-              className="soft-card p-6 flex flex-col items-center text-center gap-3 hover:shadow-md transition-shadow duration-200 group"
+              className="soft-card lift-hover p-6 flex flex-col items-center text-center gap-3 group"
             >
-              <div className="w-11 h-11 rounded-xl bg-muted border border-border flex items-center justify-center group-hover:border-primary/30 transition-colors">
-                <Phone className="w-5 h-5 text-muted-foreground" />
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white text-primary transition-colors duration-200">
+                <Phone className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs font-semibold text-foreground">Phone</p>
@@ -43,9 +45,9 @@ const ContactSection = () => {
               </div>
             </a>
 
-            <div className="soft-card p-6 flex flex-col items-center text-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-muted border border-border flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-muted-foreground" />
+            <div className="soft-card lift-hover p-6 flex flex-col items-center text-center gap-3 group">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white text-primary transition-colors duration-200">
+                <MapPin className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs font-semibold text-foreground">Location</p>
@@ -54,8 +56,10 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
+          </Reveal>
 
           {/* CTA */}
+          <Reveal delay={120}>
           <div className="soft-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <p className="text-sm font-semibold text-foreground">Ready to work together?</p>
@@ -69,6 +73,7 @@ const ContactSection = () => {
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
+          </Reveal>
         </div>
 
       </div>

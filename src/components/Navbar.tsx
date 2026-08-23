@@ -1,16 +1,18 @@
 import { useState } from "react";
 
 const allLinks = [
+  { label: "Services", href: "#services" },
   { label: "Tools", href: "#tools" },
-  { label: "Skills", href: "#skills" },
+  { label: "Showcase", href: "#gallery" },
   { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Setup", href: "#setup" },
+  { label: "Results", href: "#results" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
-const leftLinks = allLinks.slice(0, 3);
-const rightLinks = allLinks.slice(3);
+const leftLinks = allLinks.slice(0, 4);
+const rightLinks = allLinks.slice(4);
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

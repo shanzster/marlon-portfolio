@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MapPin, ArrowDown, Clock, Star, Headphones } from "lucide-react";
+import { MapPin, ArrowDown, Clock, Star, Headphones, Quote } from "lucide-react";
 
 const stats = [
   { icon: Clock, target: 7, suffix: "+", label: "Years Experience" },
@@ -130,12 +130,15 @@ const HeroSection = () => {
             <Typewriter />
           </span>
 
-          {/* Name */}
+          {/* Outcome-first headline */}
           <div className="animate-fade-up mb-3" style={{ animationDelay: "0.25s" }}>
-            <span className="block text-sm font-medium text-muted-foreground mb-0.5">Hi, I'm</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Marlon <span className="text-gradient-animate">Elago</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.08] tracking-tight">
+              Your customers,{" "}
+              <span className="text-primary">in good hands.</span>
             </h1>
+            <p className="text-sm font-medium text-muted-foreground mt-3">
+              Hi, I'm <span className="font-semibold text-foreground">Marlon Elago</span> — Customer Experience Specialist
+            </p>
           </div>
 
           {/* Bio */}
@@ -169,28 +172,73 @@ const HeroSection = () => {
             ))}
           </div>
 
+          {/* Trust row — real brands worked with */}
+          <div
+            className="animate-fade-up w-full max-w-md mb-5"
+            style={{ animationDelay: "0.5s" }}
+          >
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/70 mb-2">
+              Trusted by teams at
+            </p>
+            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-x-4 gap-y-1.5">
+              {["EasyPOS", "Pizza Hut Deliverit", "NuSkin", "Shopify Ops"].map((brand) => (
+                <span key={brand} className="text-xs font-semibold text-foreground/70">
+                  {brand}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Testimonial hook — placeholder, replace with a real client quote */}
+          <div
+            className="animate-fade-up w-full max-w-md mb-6 bg-white border border-border rounded-xl px-4 py-3 shadow-sm"
+            style={{ animationDelay: "0.55s" }}
+          >
+            <div className="flex items-center gap-0.5 mb-1.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <Quote className="w-4 h-4 text-primary/40 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-muted-foreground italic leading-relaxed">
+                {/* PLACEHOLDER — paste a real client quote here */}
+                "Add a short client testimonial here — one or two sentences on the results you delivered."
+                <span className="block not-italic font-semibold text-foreground mt-1">— Client Name, Role / Company</span>
+              </p>
+            </div>
+          </div>
+
           {/* Meta chips */}
           <div
             className="animate-fade-up flex flex-wrap justify-center lg:justify-start gap-2 mb-6"
-            style={{ animationDelay: "0.55s" }}
+            style={{ animationDelay: "0.6s" }}
           >
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-white border border-border px-3 py-1.5 rounded-full shadow-sm">
               <MapPin className="w-3 h-3 text-primary" />
               Philippines · Remote-ready
             </div>
             <div className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Available for work
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+              </span>
+              Available now · Replies within 24 hrs
             </div>
           </div>
 
           {/* CTAs */}
-          <div className="animate-fade-up flex gap-2" style={{ animationDelay: "0.65s" }}>
+          <div className="animate-fade-up flex flex-wrap justify-center lg:justify-start gap-2" style={{ animationDelay: "0.65s" }}>
             <a href="#contact" className="btn-primary">
-              Get in Touch
+              Let's Work Together
             </a>
-            <a href="/ElagoMarlon_CV.pdf" download className="btn-secondary">
-              Download Resume
+            <a
+              href="/ElagoMarlon_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              View Resume
             </a>
           </div>
         </div>

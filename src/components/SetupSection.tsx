@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const setup = [
   {
     name: "Dell Latitude Laptop",
@@ -79,10 +81,10 @@ const SetupSection = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-          {setup.map(({ name, detail, image, specs }) => (
+          {setup.map(({ name, detail, image, specs }, i) => (
+            <Reveal key={name} delay={i * 80}>
             <div
-              key={name}
-              className="group relative rounded-xl overflow-hidden border border-border shadow-sm cursor-default"
+              className="group relative rounded-xl overflow-hidden border border-border shadow-sm cursor-default transition-shadow duration-300 hover:shadow-xl"
               style={{ height: '260px' }}
             >
               {/* Background image */}
@@ -92,7 +94,7 @@ const SetupSection = () => {
               />
 
               {/* Base overlay — always visible, darkens on hover */}
-              <div className="absolute inset-0 bg-white/60 group-hover:bg-black/55 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-white/60 group-hover:bg-black/60 transition-colors duration-300" />
 
               {/* Default state — just the title at the bottom */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 group-hover:opacity-0 transition-opacity duration-300">
@@ -103,11 +105,11 @@ const SetupSection = () => {
               {/* Hover state — specs revealed */}
               <div className="absolute inset-0 flex flex-col justify-center p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <h3 className="font-bold text-white text-sm mb-1">{name}</h3>
-                <p className="text-[11px] text-orange-300 font-semibold mb-3">{detail}</p>
+                <p className="text-[11px] text-sky-300 font-semibold mb-3">{detail}</p>
                 <ul className="space-y-1.5">
                   {specs.map((spec) => (
                     <li key={spec} className="flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-orange-400 mt-1.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-1.5 flex-shrink-0" />
                       <span className="text-[11px] text-white/90 leading-snug">{spec}</span>
                     </li>
                   ))}
@@ -115,6 +117,7 @@ const SetupSection = () => {
               </div>
 
             </div>
+            </Reveal>
           ))}
         </div>
 
