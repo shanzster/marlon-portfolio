@@ -189,7 +189,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Testimonial hook — placeholder, replace with a real client quote */}
+          {/* Testimonial hook */}
           <div
             className="animate-fade-up w-full max-w-md mb-6 bg-white border border-border rounded-xl px-4 py-3 shadow-sm"
             style={{ animationDelay: "0.55s" }}
@@ -202,9 +202,8 @@ const HeroSection = () => {
             <div className="flex gap-2">
               <Quote className="w-4 h-4 text-primary/40 flex-shrink-0 mt-0.5" />
               <p className="text-xs text-muted-foreground italic leading-relaxed">
-                {/* PLACEHOLDER — paste a real client quote here */}
-                "Add a short client testimonial here — one or two sentences on the results you delivered."
-                <span className="block not-italic font-semibold text-foreground mt-1">— Client Name, Role / Company</span>
+                "Marlon does exceptionally well in customer service — professional, reliable, and genuinely great with our customers."
+                <span className="block not-italic font-semibold text-foreground mt-1">— USUBOV LLC, Client</span>
               </p>
             </div>
           </div>
