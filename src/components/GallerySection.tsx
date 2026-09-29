@@ -7,6 +7,7 @@ type Shot = {
   title: string;
   caption: string;
   image: string; // leave "" for a placeholder tile until the screenshot is added
+  blur?: boolean; // blur the screenshot to hide sensitive details
 };
 
 // One solid accent per category — drives tile theming via the --accent CSS var.
@@ -22,9 +23,9 @@ const gallery: Shot[] = [
   { category: "Product Listings", title: "Shopify Product Catalog", caption: "Catalog setup & product management", image: "/gallery/shopify-product-catalog.png" },
   { category: "Product Listings", title: "AI-Assisted Descriptions", caption: "Product copy generated & refined with Claude", image: "/gallery/ai-product-descriptions.png" },
   { category: "Product Listings", title: "Product Data & Size Charts", caption: "Metafields, size charts & specs configured", image: "/gallery/product-metafields-size-chart.png" },
-  { category: "Evidence & Results", title: "Order Fulfillment", caption: "165+ orders managed & batched in Shopify", image: "/gallery/order-fulfillment-dashboard.png" },
-  { category: "Evidence & Results", title: "Fulfilled Orders", caption: "Orders shipped with tracking added", image: "/gallery/fulfilled-orders.png" },
-  { category: "Evidence & Results", title: "Backend Operations", caption: "Ticket resolution across brands in Basecamp", image: "/gallery/backend-operations-basecamp.png" },
+  { category: "Evidence & Results", title: "Order Fulfillment", caption: "165+ orders managed & batched in Shopify", image: "/gallery/order-fulfillment-dashboard.png", blur: true },
+  { category: "Evidence & Results", title: "Fulfilled Orders", caption: "Orders shipped with tracking added", image: "/gallery/fulfilled-orders.png", blur: true },
+  { category: "Evidence & Results", title: "Backend Operations", caption: "Ticket resolution across brands in Basecamp", image: "/gallery/backend-operations-basecamp.png", blur: true },
 ];
 
 const GallerySection = () => {
@@ -123,7 +124,9 @@ const GallerySection = () => {
                         src={shot.image}
                         alt={shot.title}
                         loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                          shot.blur ? "blur-[6px] scale-105" : ""
+                        }`}
                       />
                     ) : (
                       // Placeholder until a screenshot is dropped in
@@ -207,7 +210,9 @@ const GallerySection = () => {
             <img
               src={withImage[lightbox].image}
               alt={withImage[lightbox].title}
-              className="w-full max-h-[80vh] object-contain rounded-lg"
+              className={`w-full max-h-[80vh] object-contain rounded-lg ${
+                withImage[lightbox].blur ? "blur-lg" : ""
+              }`}
             />
             <figcaption className="text-center text-white/90 text-sm mt-4">
               <span className="font-semibold">{withImage[lightbox].title}</span>
