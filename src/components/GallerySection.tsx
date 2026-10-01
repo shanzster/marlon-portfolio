@@ -19,10 +19,10 @@ const categoryMeta: Record<string, { color: string; icon: typeof Mail }> = {
 
 // Drop screenshots in /public and set `image` to the path (e.g. "/gallery/email-1.png").
 const gallery: Shot[] = [
-  { category: "Email Support", title: "Customer Correspondence", caption: "Professional refund & returns resolution in Outlook", image: "/gallery/email-customer-support.png" },
-  { category: "Product Listings", title: "Shopify Product Catalog", caption: "Catalog setup & product management", image: "/gallery/shopify-product-catalog.png" },
-  { category: "Product Listings", title: "AI-Assisted Descriptions", caption: "Product copy generated & refined with Claude", image: "/gallery/ai-product-descriptions.png" },
-  { category: "Product Listings", title: "Product Data & Size Charts", caption: "Metafields, size charts & specs configured", image: "/gallery/product-metafields-size-chart.png" },
+  { category: "Email Support", title: "Customer Correspondence", caption: "Professional refund & returns resolution in Outlook", image: "/gallery/email-customer-support.png", blur: true },
+  { category: "Product Listings", title: "Shopify Product Catalog", caption: "Catalog setup & product management", image: "/gallery/shopify-product-catalog.png", blur: true },
+  { category: "Product Listings", title: "AI-Assisted Descriptions", caption: "Product copy generated & refined with Claude", image: "/gallery/ai-product-descriptions.png", blur: true },
+  { category: "Product Listings", title: "Product Data & Size Charts", caption: "Metafields, size charts & specs configured", image: "/gallery/product-metafields-size-chart.png", blur: true },
   { category: "Evidence & Results", title: "Order Fulfillment", caption: "165+ orders managed & batched in Shopify", image: "/gallery/order-fulfillment-dashboard.png", blur: true },
   { category: "Evidence & Results", title: "Fulfilled Orders", caption: "Orders shipped with tracking added", image: "/gallery/fulfilled-orders.png", blur: true },
   { category: "Evidence & Results", title: "Backend Operations", caption: "Ticket resolution across brands in Basecamp", image: "/gallery/backend-operations-basecamp.png", blur: true },
